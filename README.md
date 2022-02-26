@@ -10,10 +10,10 @@ Rere Arga Dewanata   | 5025201078
 
 ## Jawaban Soal Nomor 2
 ### 2A
-**Deskripsi soal:**  
+**Deskripsi Soal**  
 Membuat folder baru bernama "forensic_log_website_daffainfo_log"  
 
-**Source Code soal 2 A: ** 
+**Source Code** 
 ```bash
 DefaultFolder=/home/argadewanata/SistemOperasi/Modul1/Nomor2
 
