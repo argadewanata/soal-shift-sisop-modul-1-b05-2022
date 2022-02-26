@@ -28,13 +28,13 @@ cat $DefaultFolder/log_website_daffainfo.log | awk -F'"' '{arr_of_IP[$2]++}
 			}
 		}
 		print "IP yang paling banyak mengakses server adalah: " IP_dest " sebanyak " maxRequest " requests\n"
-	}' $DefaultFolder/log_website_daffainfo.log  >  $DefaultFolder/forensic_log_website_daffainfo_log/result.txt
+	}' >  $DefaultFolder/forensic_log_website_daffainfo_log/result.txt
 
 #D. Add number of request that using user-agent curl in "result.tx" file
 cat $DefaultFolder/log_website_daffainfo.log | awk '/curl/ {++count}
     END {
           printf "Ada %d requests yang menggunakan curl sebagai user-agent\n\n", count
-        }' $DefaultFolder/log_website_daffainfo.log  >>  $DefaultFolder/forensic_log_website_daffainfo_log/result.txt
+        }' >>  $DefaultFolder/forensic_log_website_daffainfo_log/result.txt
 
 #E. Add all the IPs that access the website at 2 AM
 cat $DefaultFolder/log_website_daffainfo.log | awk -F: '/2022:02/ {gsub(/"/, "", $1)
@@ -45,4 +45,4 @@ cat $DefaultFolder/log_website_daffainfo.log | awk -F: '/2022:02/ {gsub(/"/, "",
 			printf "IP Address : %s Jam 2 pagi\n",IP
 		}
 
-	}' $DefaultFolder/log_website_daffainfo.log  >>  $DefaultFolder/forensic_log_website_daffainfo_log/result.txt
+	}' >>  $DefaultFolder/forensic_log_website_daffainfo_log/result.txt
