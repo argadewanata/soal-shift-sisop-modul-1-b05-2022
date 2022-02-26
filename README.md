@@ -49,7 +49,7 @@ Menambahkan request yang mengakses website pada 02.00 pada file 'result.txt'
 **Penjelasan**  
 Mencari IP yang mengakses pada 2022:02 dan mengeprint hasilnya. Lalu outputnya ditambahkan pada 'result.txt'
 
-## Jawaban Soal Nomor 2
+## Jawaban Soal Nomor 3
 ### 3A
 **Deskripsi soal**
 Masukkan semua metrics ke dalam suatu file log bernama metrics_{YmdHms}.log.
