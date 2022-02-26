@@ -8,6 +8,13 @@ Fahmi Muhazir        | 5025201043
 Sidrotul Munawaroh   | 5025201047
 Rere Arga Dewanata   | 5025201078 
 
+## Jawaban Soal Nomor 1
+. Untuk membuat sistem register harus membuat file register.sh yang ada ./users/user.txt agar username tidak sama dan membuat command login agar username dan password tidak sama
+. pada file main.sh di cek tidak memiliki username yang terdaftar di user.txt, maka akan langsung di redirect ke register.sh untuk membuat user baru. 
+. Demi menjaga keamanan, input password pada saat login dan register harus tertutup dan password yang terdaftar memiliki kriteria minamal 8 karakter, 
+ . memiliki minimal 1 huruf kapital dan 1 huruf kecil, alphanumeric, tidak boleh sama dengan username.
+. Setiap percobaan login dan register akan tercatat log.txt dengan format MM/DD/YY hh:mm:ss MESSAGE
+
 ## Jawaban Soal Nomor 2
 ### 2A
 **Deskripsi Soal**  
