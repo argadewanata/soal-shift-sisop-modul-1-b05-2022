@@ -47,5 +47,63 @@ awk -F: '{if (NR == 2)
 5. Lalu, total_request /12 karena pada record terjadi selama 12 jam
 6. Kemudian, hasil tersebut dimasukan ke dalam ratarata.txt
 
+### 2C  
+**Deskripsi Soal**  
+Membuat file yang bernama "result.xt" yang berisi alamat IP yang melakukan request terbanyak dan total request yang dikirimkan oleh IP tersebut
+
+**Source Code**  
+```bash
+awk -F'"' '{arr_of_IP[$2]++}
+	END {
+		maxRequest = 0
+		IP_dest = ""
+		for (i in arr_of_IP){
+			if (maxRequest < arr_of_IP[i]){
+			  maxRequest = arr_of_IP[IP_dest]
+			  IP_dest = i
+			}
+		}
+		print "IP yang paling banyak mengakses server adalah: " IP_dest " sebanyak " maxRequest " requests\n"
+	}' $DefaultFolder/log_website_daffainfo.log  >  $DefaultFolder/forensic_log_website_daffainfo_log/result.txt
+
+``` 
+**Penjelasan**
+Menggunakan array untuk menghitung banyaknya request tiap IP kemudian dibandingkan dan hasilnya dimasukan ke dalam result.txt
+
+### 2D  
+**Deskripsi Soal**  
+Menambahkan jumlah request yang menggunakan user-agent curl pada file "result.txt"
+
+**Source Code**  
+```bash
+awk '/curl/ {++count}
+    END {
+          printf "Ada %d requests yang menggunakan curl sebagai user-agent\n\n", count
+        }' $DefaultFolder/log_website_daffainfo.log  >>  $DefaultFolder/forensic_log_website_daffainfo_log/result.txt
+
+``` 
+**Penjelasan**
+Mencari jumlah kata 'curl' dan disimpan ke dalam variabel count dan hasilnya ditambahkan pada file 'result.txt' yang sudah ada
+
+### 2E 
+**Deskripsi Soal**  
+Menambahkan request yang mengakses website pada 02.00 pada file 'result.txt'
+
+**Source Code**  
+```bash
+awk -F: '/2022:02/ {gsub(/"/, "", $1)
+   		    IP_arr[$1]++}
+
+	END {
+		for (IP in IP_arr){
+			printf "IP Address : %s Jam 2 pagi\n",IP
+		}
+
+	}' $DefaultFolder/log_website_daffainfo.log  >>  $DefaultFolder/forensic_log_website_daffainfo_log/result.txt
+
+``` 
+**Penjelasan**
+Mencari IP yang mengakses pada 2022:02 dan mengeprint hasilnya. Lalu outputnya ditambahkan pada 'result.txt'
+
 
   
