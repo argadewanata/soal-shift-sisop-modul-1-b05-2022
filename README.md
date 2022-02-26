@@ -49,5 +49,50 @@ Menambahkan request yang mengakses website pada 02.00 pada file 'result.txt'
 **Penjelasan**  
 Mencari IP yang mengakses pada 2022:02 dan mengeprint hasilnya. Lalu outputnya ditambahkan pada 'result.txt'
 
+### 3A
+**Deskripsi soal**
+Masukkan semua metrics ke dalam suatu file log bernama metrics_{YmdHms}.log.
+{YmdHms} adalah waktu disaat file script bash kalian dijalankan. Misal dijalankan
+pada 2022-01-31 15:00:00, maka file log yang akan tergenerate adalah
+metrics_20220131150000.log.
+
+**Source Code**
+```
+#!/bin/bash
+
+#Making Directory for log of file
+mkdir -p log
+
+#Identify user
+USER= id -u -n
+
+#Making variabel as format name of file"
+FILE="$(date +"%Y%m%d%H%M%S")"
+
+#Making directory of file
+DIR_OUT="/home/noob/Documents/sisop/Mod1/soal3/log/metrics_$FILE.log" 
+
+#Write a format to file, with path of file
+echo "mem_total,mem_used,mem_free,mem_shared,mem_buff,mem_available,swap_total,swap_used,swap_free,path,path_size" > $DIR_OUT
+
+
+MEM="$(free | awk '/Memory:/ {printf "%s,%s,%s,%s,%s,%s", $2,$3,$4,$5,$6,$7}')"
+SWAP="$(free | awk '/Swap:/ {printf "%s,%s,%s", $2,$3,$4}')"
+STORAGE="$(du -sh /home/noob/Documents/sisop/Mod1/soal3 | awk '{printf "%s,%s",$2,$1}')"
+
+
+echo "$MEM,$SWAP,$STORAGE" >> $DIR_OUT | chmod 700 /home/noob/Documents/sisop/Mod1/soal3/log/metrics_$FILE.log
+```
+
+**Penjelasan**
+1. Membuat folder untuk log file
+2. Membuat variable untuk nama
+3. Mmebuat variable path untuk log file
+4. Mendapatkan data memori dengan (free -m) yang outputnya akan menjadi masukian dari perintah awk dengan menetapkan pola /Mem:/. dari $2 hingga $7
+5. Kemudian data swap, digunakan pola /Swap:/ pada awk. Setiap kata keluarannya juga diprint berdasarkan input argumen $2 hingga $4.
+6. Menyimpan data yang sudah dicari ke path DIR_OUT
+7. Merubahn aksebilitas file dengan chmod 700 -rwx——
+
+
 
   
