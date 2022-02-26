@@ -19,5 +19,7 @@ DefaultFolder=/home/argadewanata/SistemOperasi/Modul1/Nomor2
 
 mkdir -p $DefaultFolder/forensic_log_website_daffainfo_log
 ``` 
+**Penjelasan**
+Menggunakan mkdir -p agar membuat folder sekaligus membuat parent directorynya apabila belum tersedia. Folder ini terdapat pada path folder/home/argadewanata/SistemOperasi/Modul1/Nomor2/forensic_log_website_daffainfo_log
 
   
