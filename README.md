@@ -16,6 +16,9 @@ Rere Arga Dewanata   | 5025201078
 . Setiap percobaan login dan register akan tercatat log.txt dengan format MM/DD/YY hh:mm:ss MESSAGE
 
 ## Jawaban Soal Nomor 2
+### Kendala Nomor 2  
+Pada nomor 2C, hasil IP pada awalnya menunjukan hasil yang tidak sesuai, tetapi dapat diatasi dengan mengubah kode dan didapatkan hasil yang telah sesuai  
+
 ### 2A
 **Deskripsi Soal**  
 Membuat folder baru bernama "forensic_log_website_daffainfo_log"
