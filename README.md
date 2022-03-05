@@ -15,9 +15,14 @@ Rere Arga Dewanata   | 5025201078
  . memiliki minimal 1 huruf kapital dan 1 huruf kecil, alphanumeric, tidak boleh sama dengan username.
 . Setiap percobaan login dan register akan tercatat log.txt dengan format MM/DD/YY hh:mm:ss MESSAGE
 
-## Jawaban Soal Nomor 2
-### Kendala Nomor 2  
+## Jawaban Soal 2  
+
+### Kendala Soal 2  
 Pada nomor 2C, hasil IP pada awalnya menunjukan hasil yang tidak sesuai, tetapi dapat diatasi dengan mengubah kode dan didapatkan hasil yang telah sesuai  
+
+### Screenshot Soal 2  
+![Screeenshot Soal 2 i](https://drive.google.com/file/d/1DqYgvQt-8ZfZCN2borfbI7fmHcHXeRCF/view?usp=sharing)
+![Screenshot Soal 2 ii](https://drive.google.com/file/d/1sinkrzjzfe9X7e_nBzV4_hxs8Ov9mRyG/view?usp=sharing)
 
 ### 2A
 **Deskripsi Soal**  
