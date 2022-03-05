@@ -18,7 +18,15 @@ Rere Arga Dewanata   | 5025201078
 ## Jawaban Soal Nomor 2
 ### 2A
 **Deskripsi Soal**  
-Membuat folder baru bernama "forensic_log_website_daffainfo_log"  
+Membuat folder baru bernama "forensic_log_website_daffainfo_log"
+
+**Kode Program**  
+```
+#!/bin/bash
+DefaultFolder=/home/argadewanata/SistemOperasi/Modul1/Nomor2
+mkdir -p $DefaultFolder/forensic_log_website_daffainfo_log
+
+```
 
 **Penjelasan**  
 Menggunakan mkdir -p agar membuat folder sekaligus membuat parent directorynya apabila belum tersedia. Folder ini terdapat pada path folder/home/argadewanata/SistemOperasi/Modul1/Nomor2/forensic_log_website_daffainfo_log
@@ -26,6 +34,20 @@ Menggunakan mkdir -p agar membuat folder sekaligus membuat parent directorynya a
 ### 2B  
 **Deskripsi Soal**  
 Membuat file yang bernama "ratarata.txt" yang berisi rata rata request per jam  
+
+**Kode Program**
+```
+cat $DefaultFolder/log_website_daffainfo.log | awk -F: '{if (NR == 2)
+	  {
+	    request = $3; 
+	  }
+	 }
+	END{
+	  total_request = NR - 1;
+	  printf "Rata - rata serangan adalah sebanyak %f requests per jam\n", total_request/12
+	}' >  $DefaultFolder/forensic_log_website_daffainfo_log/ratarata.txt
+
+```  
  
 **Penjelasan**  
 1. Menggunakan awk agar mampu mengambil record tertentu dan melakukan operasi padanya  
@@ -39,22 +61,66 @@ Membuat file yang bernama "ratarata.txt" yang berisi rata rata request per jam
 **Deskripsi Soal**  
 Membuat file yang bernama "result.xt" yang berisi alamat IP yang melakukan request terbanyak dan total request yang dikirimkan oleh IP tersebut
 
-**Penjelasan**  
-Menggunakan array untuk menghitung banyaknya request tiap IP kemudian dibandingkan dan hasilnya dimasukan ke dalam result.txt
+**Kode Program**
+```  
+cat $DefaultFolder/log_website_daffainfo.log | awk -F'"' '{ arr_of_IP[$2]++}
+	END {
+		maxRequest = 0
+		IP_dest
+ 		for(i in arr_of_IP){
+			if (maxRequest < arr_of_IP[i]){
+			    IP_dest = i
+			    maxRequest = arr_of_IP[IP_dest]
+			}
+		}
+		print "IP yang paling banyak mengakses server adalah: " IP_dest " sebanyak " maxRequest " requests\n"
+	}' >  $DefaultFolder/forensic_log_website_daffainfo_log/result.txt
+
+```  
+
+**Penjelasan**
+1. Menggunakan awk agar mampu mengambil record tertentu dan melakukan operasi padanya  
+2. -F'"' berarti tanda " menjadi pemisah antar argumen
+3. Argumen ke-2 ditandai dengan $2 yang kemudian jumlahnya dimasukkan ke dalam arr_of_IP  
+4. Menggunakan array untuk menghitung banyaknya request tiap IP kemudian dibandingkan dan hasilnya dimasukan ke dalam result.txt  
 
 ### 2D  
 **Deskripsi Soal**  
 Menambahkan jumlah request yang menggunakan user-agent curl pada file "result.txt"
- 
+
+**Kode Program**
+``` 
+cat $DefaultFolder/log_website_daffainfo.log | awk '/curl/ {++count}
+    END {
+          printf "Ada %d requests yang menggunakan curl sebagai user-agent\n\n", count
+        }' >>  $DefaultFolder/forensic_log_website_daffainfo_log/result.txt
+
+```  
 **Penjelasan**  
 Mencari jumlah kata 'curl' dan disimpan ke dalam variabel count dan hasilnya ditambahkan pada file 'result.txt' yang sudah ada
 
 ### 2E 
 **Deskripsi Soal**  
-Menambahkan request yang mengakses website pada 02.00 pada file 'result.txt'
+Menambahkan request yang mengakses website pada 02.00 pada file 'result.txt'  
 
-**Penjelasan**  
-Mencari IP yang mengakses pada 2022:02 dan mengeprint hasilnya. Lalu outputnya ditambahkan pada 'result.txt'
+**Kode Program**
+``` 
+cat $DefaultFolder/log_website_daffainfo.log | awk -F: '/2022:02/ {gsub(/"/, "", $1)
+   		    IP_arr[$1]++}
+
+	END {
+		for (IP in IP_arr){
+			printf "IP Address : %s Jam 2 pagi\n",IP
+		}
+
+	}' >>  $DefaultFolder/forensic_log_website_daffainfo_log/result.txt
+
+``` 
+
+**Penjelasan**
+1. Menggunakan awk agar mampu mengambil record tertentu dan melakukan operasi padanya   
+2. Mencari pattern /2022:02/ atau pukul 02.00 dan menambahkan ke dalam IP_arr
+3. Menambahkan output kepada result.txt
 
 ## Jawaban Soal Nomor 3
 ### 3A
