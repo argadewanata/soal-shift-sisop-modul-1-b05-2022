@@ -21,8 +21,8 @@ Rere Arga Dewanata   | 5025201078
 Pada nomor 2C, hasil IP pada awalnya menunjukan hasil yang tidak sesuai, tetapi dapat diatasi dengan mengubah kode dan didapatkan hasil yang telah sesuai  
 
 ### Screenshot Soal 2  
-![Screeenshot Soal 2 i](https://drive.google.com/file/d/1DqYgvQt-8ZfZCN2borfbI7fmHcHXeRCF/view?usp=sharing)
-![Screenshot Soal 2 ii](https://drive.google.com/file/d/1sinkrzjzfe9X7e_nBzV4_hxs8Ov9mRyG/view?usp=sharing)
+![Screeenshot Soal 2 i](Screenshot/SS_nomor2_i.png)
+![Screenshot Soal 2 ii](Screenshot/SS_nomor2_ii.png)
 
 ### 2A
 **Deskripsi Soal**  
