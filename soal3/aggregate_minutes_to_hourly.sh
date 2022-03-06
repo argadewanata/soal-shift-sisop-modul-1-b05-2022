@@ -12,8 +12,8 @@ DIR_OUT="/home/noob/Documents/sisop/Mod1/soal3/log/metrics_$FILE.log"
 
 #Checkin var of file when it have "mem", used grep
 check_var() {
-	for file in $($DIR_OUT/log/metrics_2022* | grep $Date)
-	do cat $file | grep -v mem 
+	for resources in $($DIR_OUT/log/metrics_2022* | grep $Date)
+	do cat $resources | grep -v mem 
 	done
 }
 
