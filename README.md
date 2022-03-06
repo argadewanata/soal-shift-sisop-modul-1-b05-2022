@@ -8,12 +8,114 @@ Fahmi Muhazir        | 5025201043
 Sidrotul Munawaroh   | 5025201047
 Rere Arga Dewanata   | 5025201078 
 
-## Jawaban Soal Nomor 1
-. Untuk membuat sistem register harus membuat file register.sh yang ada ./users/user.txt agar username tidak sama dan membuat command login agar username dan password tidak sama
-. pada file main.sh di cek tidak memiliki username yang terdaftar di user.txt, maka akan langsung di redirect ke register.sh untuk membuat user baru. 
-. Demi menjaga keamanan, input password pada saat login dan register harus tertutup dan password yang terdaftar memiliki kriteria minamal 8 karakter, 
- . memiliki minimal 1 huruf kapital dan 1 huruf kecil, alphanumeric, tidak boleh sama dengan username.
-. Setiap percobaan login dan register akan tercatat log.txt dengan format MM/DD/YY hh:mm:ss MESSAGE
+## Jawaban Soal 1
+
+### Kendala Soal 1
+Pada nomor 1C, Ketika user mencoba login namun passwordnya salah, maka message pada log adalah LOGIN:ERROR Failed login attempt on user USERNAME.
+Pada nomor 1D, gambar tidak memiliki nama yang sesuai dan tidak dapat dimasukan kedalam folder yang sesuai.
+
+### 1A 
+**Deskripsi Soal**
+Membuat sistem register pada script register.sh  yang setiap user yang didaftarkan dan disimpan di dalam file ./users/user.txt
+
+**Kode Program**
+```
+path=pwd
+echo "Register Mode"
+
+read  username
+
+read -r -s password
+date=$(date '+%Y-%m-%d %H:%M:%S')
+
+if grep -qi ${username} user.txt;
+
+```
+
+**Penyelesaian**
+Membuat file register.sh yang bisa mengecek isi file dari user agar tidak ada username yang sama.
+
+### 1B
+**Deskripsi Soal**
+Membuat input password pada saat login dan register harus tertutup dan password yang terdaftar harus memiliki beberapa kriteria yang ditentukan
+
+**Kode Program**
+```
+if [[ ${username} != ${password} ]]; then
+        if [[ ${password} =~ [A-Za-z0-9]{8,} ]]; then
+            if [[ ${password} =~ [A-Z] && ${password} =~ [a-z] && ${password} =~ [0-9] ]]; then
+
+```
+
+**Penyelesaian**
+Fungsinya untuk mengecek username yang sama, mengecek password minimal 8 character berupa alphanmeric, dan mengecek password minimal memiliki 1 lowercase dan uppercase.
+
+### 1C
+**Deskripsi Soal**
+Setiap percobaan login dan register akan tercatat log.txt dengan format MM/DD/YY hh:mm:ss MESSAGE. Maka log message akan berbeda tergantung aksi yang dilakukan oleh user
+
+**Penyelesaian**
+Setiap login yang di lakukan user akan tercatat di log.txt sesuai dengan tanggal percobaannya
+```
+date=$(date '+%Y-%m-%d %H:%M:%S')
+```
+Ketika percobaan register tersedia maka log adalah 
+```
+echo "${date} REGISTER: Error User already exist" >> log.txt
+```
+Ketika percobaan register berhasil maka, log adalah
+```
+echo "${date} REGISTER: INFO User ${username} registered successfully" >> log.txt
+```
+Ketika percobaan register password tidak minimal 1 huruf besar dan 1 huruf kecil, maka log adalah 
+```
+echo "${date} REGISTER: Error Password must constaint from uppercase, lowercase, and numeric" >> log.txt
+```
+Ketika percobaan register password tidak 8 character maka log adalah
+```
+echo "${date} REGISTER: Error Password must constaint minimal 8 characters" >> log.txt
+```
+Ketika percobaan register dengan username dan password sama, maka log adalah 
+ ```
+echo "${date} REGISTER: Error Password must not same the username" >> log.txt
+```
+### 1D
+**Deskripsi Soal**
+Setelah login, user dapat mengetikkan 2 command dengan dokumentasi dl N (N = Jumlah gambar yang akan di download) dan att untuk menghitung jumlah percobaan login baik yang berhasil atau tidak dari user yang sedang login saat itu.
+
+**Kode Program**
+```
+ then 
+        echo "How many pictures  do you want to download?"
+        read  n
+        if [[ ! -f "$folder_date.zip" ]]
+        then
+            echo "Zipping"
+            mkdir $folder_date
+            count=0
+            for(( i=1; i<=$n; i++ ))
+            do
+                wget https://loremflickr.com/320/240 $folder_date/PIC_$i.jpg
+            done 
+            zip -P $password -r $folder_date.zip $folder_date/
+	        rm -rf $folder_date
+        else
+            echo "Unzipping Mode"
+            unzip -P $password $folder.zip
+            rm $folder.zip
+            count=$(find $folder -type f | wc -l)
+            for(( i=1; i<=$n; i++ ))
+            do
+               wget https://loremflickr.com/320/240 $folder_date/PIC_$i.jpg
+            done 
+            zip -P $password -r $folder.zip $folder_date/
+	        rm -rf $folder_date
+        fi
+
+```
+**Penjelasan**
+Pada saat memasukan comand dl maka akan mendownload gambar dari https://loremflickr.com/320/240 dengan
+jumlah sesuai dengan yang diinputkan oleh user. Kemudian di masukan kedalam folder YYYY-MM-DD_USERNAME dan format penamaan file nya adalah PIC_XX. Namun terdapat kendala untuk memasukan file kedalam folder dan merubah nama file nya menjadi sesuai yang di inginkan, kemudian untuk comand att, akan menghitung berapa log user yang mencoba login baik berhasil ataupun tidak.
 
 ## Jawaban Soal 2  
 
