@@ -309,7 +309,8 @@ check_var() {
 
 #Input without replace oldes value
 echo $Pattern  >> $DIR_OUT
-``	
+```
 
+![Screenshot Soal 3](Screenshot/SS_Nomor3.png)
 
   
