@@ -175,7 +175,7 @@ echo "$MEM,$SWAP,$STORAGE" >> $DIR_OUT | chmod 700 /home/noob/Documents/sisop/Mo
 6. Menyimpan data yang sudah dicari ke path DIR_OUT
 7. Merubahn aksebilitas file dengan chmod 700 -rwx——
 
-##Kendala mengerjakan file aggregate_minutes_to_hourly.sh
+### Kendala mengerjakan file aggregate_minutes_to_hourly.sh
 
 Tahap pengerjaan hanya baru sampai pada pengambilan variabel data. Kendalaya adalah sulit menentukan cara untuk mengambil value dari data yang ada, agar dapat dilakukan pemrosesan sehingga menghasilkan output yang dinginkan
 ```
