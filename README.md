@@ -117,6 +117,10 @@ Setelah login, user dapat mengetikkan 2 command dengan dokumentasi dl N (N = Jum
 Pada saat memasukan comand dl maka akan mendownload gambar dari https://loremflickr.com/320/240 dengan
 jumlah sesuai dengan yang diinputkan oleh user. Kemudian di masukan kedalam folder YYYY-MM-DD_USERNAME dan format penamaan file nya adalah PIC_XX. Namun terdapat kendala untuk memasukan file kedalam folder dan merubah nama file nya menjadi sesuai yang di inginkan, kemudian untuk comand att, akan menghitung berapa log user yang mencoba login baik berhasil ataupun tidak.
 
+### Screenshot Soal 1
+![ATT.PNG](./ATT.PNG)
+![dl.png](./dl.png)
+
 ## Jawaban Soal 2  
 
 ### Kendala Soal 2  
